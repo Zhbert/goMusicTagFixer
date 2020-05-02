@@ -4,7 +4,20 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"regexp"
 )
+
+//check name for music extension
+func extensioncheck(name string) bool {
+	var ok bool
+
+	ok = false
+
+	r, _ := regexp.Compile(`.mp3*$`)
+	ok = r.MatchString(name)
+
+	return ok
+}
 
 //function for scanning dir
 func scandir(dir string, depth int) {
@@ -28,11 +41,15 @@ func scandir(dir string, depth int) {
 
 		fmt.Println("├─", file.Name())
 
+		if extensioncheck(file.Name()) == true {
+			mp3count++
+		}
+
 		flag := file.IsDir()
 		if flag == true {
 			path := dir + "/" + file.Name()
+			foldercount++
 			scandir(path, depth+1)
 		}
-
 	}
 }

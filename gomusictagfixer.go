@@ -8,6 +8,9 @@ import (
 	"time"
 )
 
+var mp3count int
+var foldercount int
+
 func main() {
 	var command string
 
@@ -34,7 +37,19 @@ func main() {
 			r, _ := regexp.Compile(`\w*$`)
 			fmt.Println(r.FindString(dir))
 
+			mp3count = 0
+			foldercount = 0
 			scandir(dir, 0) //start scanning with 0 depth
+
+			//View all statistic
+			y := 0
+			for y < 40 {
+				print("─")
+				y++
+			}
+			fmt.Println("─")
+			fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
+			fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
 		case "exit": //Exit program
 			os.Exit(0)
 		default: //Incorrect command
