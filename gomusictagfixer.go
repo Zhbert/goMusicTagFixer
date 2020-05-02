@@ -53,6 +53,22 @@ func main() {
 			fmt.Println(" ")
 		case "exit": //Exit program
 			os.Exit(0)
+		case "deepscan":
+			dt := time.Now()
+			fmt.Println("Deep scan started at ", dt.Format("15:04:05 01-02-2006"))
+
+			dir, err := os.Getwd() //current directory
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			//View main directory name
+			r, _ := regexp.Compile(`\w*$`)
+			fmt.Println(r.FindString(dir))
+
+			mp3count = 0
+			foldercount = 0
+			deepscan(dir, 0)
 		default: //Incorrect command
 			fmt.Println("You have not entered any command!")
 		}
