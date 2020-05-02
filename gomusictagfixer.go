@@ -50,6 +50,7 @@ func main() {
 			fmt.Println("─")
 			fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
 			fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
+			fmt.Println(" ")
 		case "exit": //Exit program
 			os.Exit(0)
 		default: //Incorrect command
