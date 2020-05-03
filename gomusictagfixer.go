@@ -69,6 +69,17 @@ func main() {
 			mp3count = 0
 			foldercount = 0
 			deepscan(dir, 0)
+
+			//View all statistic
+			y := 0
+			for y < 40 {
+				print("─")
+				y++
+			}
+			fmt.Println("─")
+			fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
+			fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
+			fmt.Println(" ")
 		default: //Incorrect command
 			fmt.Println("You have not entered any command!")
 		}

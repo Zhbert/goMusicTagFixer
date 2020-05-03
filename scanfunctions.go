@@ -33,22 +33,23 @@ func scandir(dir string, depth int) {
 	//Check files and directories and print
 	y := 0
 	for _, file := range files {
-		if depth != 0 {
-			for y <= depth-1 {
-				fmt.Print("│  ")
-				y++
-			}
-			y = 0
-		}
-
-		fmt.Println("├─", file.Name())
 
 		if extensioncheck(file.Name()) == true {
 			mp3count++
+
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│  ")
+					y++
+				}
+				y = 0
+			}
+			fmt.Println("├─", file.Name())
 		}
 
 		flag := file.IsDir()
 		if flag == true {
+			fmt.Println("├─", file.Name())
 			path := dir + "/" + file.Name()
 			foldercount++
 			scandir(path, depth+1)
@@ -67,24 +68,64 @@ func deepscan(dir string, depth int) {
 	//Check files and directories and print
 	y := 0
 	for _, file := range files {
-		if depth != 0 {
-			for y <= depth-1 {
-				fmt.Print("│  ")
-				y++
-			}
-			y = 0
-		}
-
-		fmt.Println("├─", file.Name())
 
 		if extensioncheck(file.Name()) == true {
 			mp3count++
+
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│  ")
+					y++
+				}
+				y = 0
+			}
+
+			fmt.Println("├─", file.Name())
+
 			path := dir + "/" + file.Name()
 			mp3file, err := id3.Open(path)
 			if err != nil {
 				log.Fatal(err)
 			}
-			fmt.Println(mp3file.Artist())
+
+			//Artist info
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│     │")
+					y++
+				}
+				y = 0
+			} else {
+				print("│  │")
+			}
+			fmt.Println("Artist: ", mp3file.Artist())
+
+			//Album info
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│     │")
+					y++
+				}
+				y = 0
+			} else {
+				print("│    │")
+			}
+			fmt.Println("Album: ", mp3file.Album())
+
+			//Title info
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│     │")
+					y++
+				}
+				y = 0
+			} else {
+				print("│  │")
+			}
+			fmt.Println("Title: ", mp3file.Title())
+
+			mp3file.Close()
+
 		}
 
 		flag := file.IsDir()
