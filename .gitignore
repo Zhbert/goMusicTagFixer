@@ -12,7 +12,7 @@
 *.out
 
 #binaries of this program
-builds/*
+#builds/*
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
