@@ -110,7 +110,7 @@ func deepscan(dir string, depth int) {
 			} else {
 				print("│    │")
 			}
-			fmt.Println("Album: ", mp3file.Album())
+			fmt.Println("Album:  ", mp3file.Album())
 
 			//Title info
 			if depth != 0 {
@@ -122,7 +122,7 @@ func deepscan(dir string, depth int) {
 			} else {
 				print("│  │")
 			}
-			fmt.Println("Title: ", mp3file.Title())
+			fmt.Println("Title:  ", mp3file.Title())
 
 			mp3file.Close()
 
