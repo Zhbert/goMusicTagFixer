@@ -91,7 +91,7 @@ func deepscan(dir string, depth int) {
 			//Artist info
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│     │")
+					fmt.Print("│  :  │")
 					y++
 				}
 				y = 0
@@ -103,19 +103,19 @@ func deepscan(dir string, depth int) {
 			//Album info
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│     │")
+					fmt.Print("│  :  │")
 					y++
 				}
 				y = 0
 			} else {
-				print("│    │")
+				print("│  │")
 			}
 			fmt.Println("Album:  ", mp3file.Album())
 
 			//Title info
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│     │")
+					fmt.Print("│  :  │")
 					y++
 				}
 				y = 0
@@ -125,6 +125,29 @@ func deepscan(dir string, depth int) {
 			fmt.Println("Title:  ", mp3file.Title())
 
 			mp3file.Close()
+
+			//find the longest string
+			long := len(mp3file.Artist())
+			if len(mp3file.Album()) > long {
+				long = len(mp3file.Album())
+			}
+			if len(mp3file.Title()) > long {
+				long = len(mp3file.Title())
+			}
+
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│  :  │")
+					y++
+				}
+			}
+
+			y := 0
+			for y < long {
+				print("─")
+				y++
+			}
+			fmt.Println(" ")
 
 		}
 
