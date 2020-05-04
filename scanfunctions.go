@@ -49,6 +49,12 @@ func scandir(dir string, depth int) {
 
 		flag := file.IsDir()
 		if flag == true {
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│  ")
+					y++
+				}
+			}
 			fmt.Println("├─", file.Name())
 			path := dir + "/" + file.Name()
 			foldercount++
@@ -79,7 +85,7 @@ func deepscan(dir string, depth int) {
 				}
 				y = 0
 			}
-
+			println(depth)
 			fmt.Println("├─", file.Name())
 
 			path := dir + "/" + file.Name()
@@ -91,7 +97,7 @@ func deepscan(dir string, depth int) {
 			//Artist info
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│  :  │")
+					fmt.Print("│  :  ")
 					y++
 				}
 				y = 0
@@ -103,7 +109,7 @@ func deepscan(dir string, depth int) {
 			//Album info
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│  :  │")
+					fmt.Print("│  :  ")
 					y++
 				}
 				y = 0
@@ -115,7 +121,7 @@ func deepscan(dir string, depth int) {
 			//Title info
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│  :  │")
+					fmt.Print("│  :  ")
 					y++
 				}
 				y = 0
@@ -137,22 +143,32 @@ func deepscan(dir string, depth int) {
 
 			if depth != 0 {
 				for y <= depth-1 {
-					fmt.Print("│  :  │")
+					fmt.Print("│  :  ")
 					y++
 				}
+				y = 0
+			} else {
+				print("│  │")
 			}
 
-			y := 0
+			y = 0
 			for y < long {
 				print("─")
 				y++
 			}
 			fmt.Println(" ")
-
 		}
 
 		flag := file.IsDir()
 		if flag == true {
+			if depth != 0 {
+				for y <= depth-1 {
+					fmt.Print("│  ")
+					y++
+				}
+				y = 0
+			}
+			fmt.Println("├─", file.Name())
 			path := dir + "/" + file.Name()
 			foldercount++
 			deepscan(path, depth+1)
