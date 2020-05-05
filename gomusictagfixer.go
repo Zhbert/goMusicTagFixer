@@ -68,7 +68,7 @@ func main() {
 
 			mp3count = 0
 			foldercount = 0
-			deepscan(dir, 0)
+			deepscantwo(dir, 0)
 
 			//View all statistic
 			y := 0
