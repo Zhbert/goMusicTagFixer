@@ -220,6 +220,7 @@ func deepscantwo(dir string, depth int) {
 				} else {
 					fmt.Print("   ")
 				}
+				fmt.Print("   ")
 				switch i {
 				case 0:
 					fmt.Println("Artist: ", mp3file.Artist())
