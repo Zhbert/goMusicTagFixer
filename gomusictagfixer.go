@@ -80,6 +80,47 @@ func main() {
 			fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
 			fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
 			fmt.Println(" ")
+		case "mp3settags":
+			dt := time.Now()
+			fmt.Println("Changing of mp3 tags started at ", dt.Format("15:04:05 01-02-2006"))
+
+			dir, err := os.Getwd() //current directory
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			//Check mp3 and folder counts
+			if mp3count != 0 {
+				//View all statistic
+				y := 0
+				for y < 40 {
+					print("─")
+					y++
+				}
+				fmt.Println("─")
+				fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
+				fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
+				fmt.Println(" ")
+				mp3settag(dir)
+				fmt.Println("Process complete!")
+			} else {
+				mp3count = 0
+				foldercount = 0
+				scandir(dir, 0)
+				//View all statistic
+				y := 0
+				for y < 40 {
+					print("─")
+					y++
+				}
+				fmt.Println("─")
+				fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
+				fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
+				fmt.Println(" ")
+				mp3settag(dir)
+				fmt.Println("Process complete!")
+			}
+
 		default: //Incorrect command
 			fmt.Println("You have not entered any command!")
 		}
