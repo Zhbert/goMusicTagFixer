@@ -117,7 +117,7 @@ func deepscantwo(dir string, depth int) {
 					fmt.Println("Title:  ", mp3file.Title())
 				}
 				i++
-				mp3file.Close()
+				defer mp3file.Close()
 			}
 		}
 

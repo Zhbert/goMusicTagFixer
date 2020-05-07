@@ -10,11 +10,14 @@ import (
 )
 
 //func to set mp3 tags
-func mp3settag(dir string) {
-	count := 0
+func mp3settag(dir string, depth int) {
 	//Get the directory name
 	r, _ := regexp.Compile(`[0-9a-zA-Z_ &]*$`)
 	albumName := r.FindString(dir)
+	if depth == 0 {
+		albumName = mainFolder
+	}
+	println(albumName)
 
 	//Get files and directories in path
 	files, err := ioutil.ReadDir(dir)
@@ -30,16 +33,16 @@ func mp3settag(dir string) {
 				log.Fatal(err)
 			}
 			mp3file.SetAlbum(albumName)
-			mp3file.Close()
-			count++
+			mp3file.SetArtist(albumName)
+			defer mp3file.Close()
 			//View info
-			fmt.Println(file.Name(), "setiing", albumName, "album name")
+			fmt.Println("\x1b[35m", file.Name(), "\x1b[0m", "setting", "\x1b[32m", albumName, "\x1b[0m", "album and artist name")
 		}
 
 		flag := file.IsDir()
 		if flag == true {
 			path := dir + "/" + file.Name()
-			mp3settag(path)
+			mp3settag(path, depth+1)
 		}
 	}
 }

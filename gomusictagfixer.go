@@ -10,6 +10,7 @@ import (
 
 var mp3count int
 var foldercount int
+var mainFolder string
 
 func main() {
 	var command string
@@ -64,7 +65,8 @@ func main() {
 
 			//View main directory name
 			r, _ := regexp.Compile(`\w*$`)
-			fmt.Println(r.FindString(dir))
+			mainFolder = r.FindString(dir)
+			fmt.Println(mainFolder)
 
 			mp3count = 0
 			foldercount = 0
@@ -91,6 +93,7 @@ func main() {
 
 			//Check mp3 and folder counts
 			if mp3count != 0 {
+				mp3settag(dir, 0)
 				//View all statistic
 				y := 0
 				for y < 40 {
@@ -98,15 +101,14 @@ func main() {
 					y++
 				}
 				fmt.Println("─")
-				fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
-				fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
+				fmt.Println("Changing complete at ", dt.Format("15:04:05 01-02-2006"))
+				fmt.Println("Changed ", mp3count, " mp3 files in ", foldercount, " folders.")
 				fmt.Println(" ")
-				mp3settag(dir)
-				fmt.Println("Process complete!")
 			} else {
 				mp3count = 0
 				foldercount = 0
 				scandir(dir, 0)
+				mp3settag(dir, 0)
 				//View all statistic
 				y := 0
 				for y < 40 {
@@ -114,13 +116,11 @@ func main() {
 					y++
 				}
 				fmt.Println("─")
-				fmt.Println("Scanning complete at ", dt.Format("15:04:05 01-02-2006"))
-				fmt.Println("Founded ", mp3count, " mp3 files in ", foldercount, " folders.")
-				fmt.Println(" ")
-				mp3settag(dir)
-				fmt.Println("Process complete!")
+				fmt.Println("Changing complete at ", dt.Format("15:04:05 01-02-2006"))
+				fmt.Println("Changed ", mp3count, " mp3 files in ", foldercount, " folders.")
 			}
-
+		case "help":
+			helpView()
 		default: //Incorrect command
 			fmt.Println("You have not entered any command!")
 		}
