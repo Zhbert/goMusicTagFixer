@@ -92,11 +92,6 @@ func main() {
 				log.Fatal(err)
 			}
 
-			//View main directory name
-			r, _ := regexp.Compile(`[0-9a-zA-Z_ &]*$`)
-			fmt.Println(r.FindString(dir))
-			mainFolder = r.FindString(dir)
-
 			//Check mp3 and folder counts
 			if mp3count != 0 {
 				mp3settag(dir, 0)
