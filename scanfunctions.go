@@ -110,11 +110,11 @@ func deepscantwo(dir string, depth int) {
 				fmt.Print("   ")
 				switch i {
 				case 0:
-					fmt.Println("Artist: ", mp3file.Artist())
+					fmt.Println("\x1b[35mArtist: ", mp3file.Artist(), "\x1b[0m")
 				case 1:
-					fmt.Println("Album:  ", mp3file.Album())
+					fmt.Println("\x1b[35mAlbum:  ", mp3file.Album(), "\x1b[0m")
 				case 2:
-					fmt.Println("Title:  ", mp3file.Title())
+					fmt.Println("\x1b[35mTitle:  ", mp3file.Title(), "\x1b[0m")
 				}
 				i++
 				defer mp3file.Close()
