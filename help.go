@@ -22,7 +22,7 @@ func helpView() {
 	additional functionality - it shows three main tags under each of the tracks:
 	artist, album and title.
 
-	mp3settag -   the main command that the utility was designed for. It sets 
+	mp3settags -   the main command that the utility was designed for. It sets 
 	the album tag value for all tracks equal to the name of the directory where 
 	this tag is located.
 
