@@ -24,7 +24,7 @@ func helpView() {
 
 	mp3settags -   the main command that the utility was designed for. It sets 
 	the album tag value for all tracks equal to the name of the directory where 
-	this tag is located.
+	this file is located.
 
 	help      -   view this help page.
 
