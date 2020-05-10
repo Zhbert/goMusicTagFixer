@@ -186,3 +186,7 @@ Changed  49  mp3 files in  5  folders.
 **help**      -   view this help page.
 
 The library is used for working with tags - [mikkyang/id3-go](https://github.com/mikkyang/id3-go)
+
+#Build program
+
+A convenient script has been written to build the program - build.sh. It compiles the program and puts the binary in the folder ./builds. 
